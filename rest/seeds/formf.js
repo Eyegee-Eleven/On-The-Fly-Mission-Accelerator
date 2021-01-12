@@ -8,7 +8,7 @@ exports.seed = function(knex) {
 				[
 					{
 						tail: "0026",
-						date: knex.fn.now(),
+						date: "2021-01-12T07:00:00.000Z",
 						from: "KABQ",
 						to: "KABQ",
 						mission: "TRANING",
@@ -23,7 +23,7 @@ exports.seed = function(knex) {
 					},
 					{
 						tail: "0044",
-						date: knex.fn.now(),
+						date: "2022-01-12T07:00:00.000Z",
 						from: "KCVS",
 						to: "KABQ",
 						mission: "PAX TRANS",
