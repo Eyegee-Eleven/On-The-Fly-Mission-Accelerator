@@ -61,6 +61,22 @@ const mockList = [
 		}
 ]
 
+const mockNewFormF = {
+						tail: "0034",
+						date: "2026-01-12T07:00:00.000Z",
+						from: "KDOV",
+						to: "KHBT",
+						mission: "EXERCISE",
+						basic_weight: 38000,
+						basic_moment: 11500,
+						crew_weight: 660,
+						crew_moment: 57,
+						fuel_weight: 9000,
+						fuel_moment: 3300,
+						kit: "[{name: 'Fire extinguisher', weight: 20, moment: 5}]",
+						cargo: "[{name: '2 pax', weight: 500, moment: 250}]"
+                     };
+
 beforeAll(async () => {
 	await knex.migrate.rollback();
 	await knex.migrate.latest();
@@ -106,5 +122,30 @@ describe("REST API", () => {
 								done();
 							})
 							.catch(err => done(err))
+	})
+
+	it('POST /details should create a new form f and return the object that was inserted', done=>{
+		request.post('/details')
+				.send(mockNewFormF)
+				.expect(200)
+				.then(res => {
+					mockNewFormF.id=3;
+					expect(res.body).toEqual([mockNewFormF]);
+					done();
+				})
+				.catch(err => done(err))
+	})
+	
+    it('PUT /details should update a targeted form f', done=>{
+		const mockNewFormFVariant = {...mockNewFormF, fuel_weight: 5000};
+		
+		request.put('/details')
+				.send(mockNewFormFVariant)
+				.expect(200)
+				.then(res => {
+					expect(res.body).toEqual([mockNewFormFVariant]);
+					done();
+				})
+				.catch(err => done(err))
 	})
 })
