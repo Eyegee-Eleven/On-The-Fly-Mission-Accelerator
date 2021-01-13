@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react'
 import Header from './components/Header'
 import LgButton from './components/LgButton'
+import OnTheFly from './components/on-the-fly'
 import {
   BrowserRouter as Router,
   Route,
@@ -25,12 +26,13 @@ export default class App extends React.Component {
   render() {
     return (
       <>
+      <OnTheFly/>
         <Header/>
         <Router>
           <Switch>
-            <Route exact path='/'>
+            <Route exact path='/home'>
               <Link to='/modify-form-f'><LgButton name={this.state.homepageOptions[0]} /></Link>
-              <Link to='on-the-fly'><LgButton name={this.state.homepageOptions[1]} /></Link>
+              <Link to='/on-the-fly'><LgButton name={this.state.homepageOptions[1]} /></Link>
             </Route>
           </Switch>
         </Router>
