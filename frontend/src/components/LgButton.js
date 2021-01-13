@@ -8,7 +8,7 @@ export default class LgButton extends React.Component {
   render() {
     return (
       <>
-        <button id='homepage-button'>{this.props.name}</button>
+        <button className='homepage-button'>{this.props.name}</button>
       </>
     )
   }
