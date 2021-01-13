@@ -1,4 +1,4 @@
-export default function MissionDetails({formf={}, setFormF}){
+export default function MissionDetails( {formf={}, setFormF} ){
 
 	const inputOnChange = (event) => {
 		const newFormF={...formf};

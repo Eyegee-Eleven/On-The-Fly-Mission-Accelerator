@@ -32,6 +32,7 @@ export default class App extends React.Component {
               <Link to='/modify-form-f'><LgButton name={this.state.homepageOptions[0]} /></Link>
               <Link to='on-the-fly'><LgButton name={this.state.homepageOptions[1]} /></Link>
             </Route>
+
           </Switch>
         </Router>
 
