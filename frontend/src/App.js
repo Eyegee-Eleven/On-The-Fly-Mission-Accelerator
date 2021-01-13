@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react'
 import Header from './components/Header'
 import LgButton from './components/LgButton'
+import OnTheFly from './components/on-the-fly'
 import {
   BrowserRouter as Router,
   Route,
@@ -25,6 +26,8 @@ export default class App extends React.Component {
   render() {
     return (
       <>
+      <OnTheFly/>
+
         <Header/>
         <Router>
           <Switch>
