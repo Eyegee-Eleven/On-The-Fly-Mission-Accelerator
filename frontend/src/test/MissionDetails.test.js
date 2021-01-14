@@ -41,11 +41,11 @@ describe ('MissionDetails', () => {
         const tailForm = appWrapper.find('#tail')
         const dateForm = appWrapper.find('#date')
 
-        expect(missionForm.text()).toEqual(mockFormF.mission);
-        expect(toForm.text()).toEqual(mockFormF.to);
-        expect(fromForm.text()).toEqual(mockFormF.from);
-        expect(tailForm.text()).toEqual(mockFormF.tail);
-        expect(dateForm.text()).toEqual(mockFormF.date);
+        expect(missionForm.props().value).toEqual(mockFormF.mission);
+        expect(toForm.props().value).toEqual(mockFormF.to);
+        expect(fromForm.props().value).toEqual(mockFormF.from);
+        expect(tailForm.props().value).toEqual(mockFormF.tail);
+        expect(dateForm.props().value).toEqual(mockFormF.date);
     })
 
     it('User input changes should update the parent components state with new form data', ()=>{
@@ -54,7 +54,7 @@ describe ('MissionDetails', () => {
 
         const changeAndExpect = (propName, newValue) => {
             const formElement = appWrapper.find(`#${propName}`)
-            formElement.simulate('change', { target: { name: propName, value: newValue } })
+            formElement.simulate('change', { target: { id: propName, value: newValue } })
             expect(mockFormF[propName]).toEqual(newValue)
         }
 

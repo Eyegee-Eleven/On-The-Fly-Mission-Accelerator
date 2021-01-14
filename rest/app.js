@@ -79,7 +79,6 @@ app.post('/details', (req,res) => {
 })
 
 app.put('/details', (req, res) => {
-	console.log(req.body);
 	knex('formf')
 		.update(req.body)
 		.where('id', req.body.id)
