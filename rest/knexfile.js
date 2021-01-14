@@ -9,4 +9,9 @@ module.exports = {
       password: 'admin'
     },
   },
+  
+  docker:{
+    client: 'pg',
+    connection: "postgres://postgres:admin@postgres:5432/otfma"
+  }
 };

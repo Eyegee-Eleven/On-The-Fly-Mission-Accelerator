@@ -1,0 +1,31 @@
+version: '3'
+services:
+  rest:
+    build: ./rest
+    depends_on:
+      - postgres
+      
+    environment:
+      - DOCKERIZED=1
+
+    ports:
+      - '3001:3001'
+    command: node app.js
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - rest
+
+    ports:
+      - '80:3000'
+    command: npm start
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - '35432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: otfma
