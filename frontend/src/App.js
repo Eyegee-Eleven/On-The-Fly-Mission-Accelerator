@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react'
 import Header from './components/Header'
 import LgButton from './components/LgButton'
+import OnTheFly from './components/on-the-fly'
 import {
   BrowserRouter as Router,
   Route,
@@ -14,9 +15,6 @@ import {
 export default class App extends React.Component {
   constructor() {
     super()
-    this.state={
-      homepageOptions : ['Accelerate Your Mission', 'Change On-The-Fly']
-    } 
 
   }
 
@@ -25,12 +23,15 @@ export default class App extends React.Component {
   render() {
     return (
       <>
+      
         <Header/>
         <Router>
           <Switch>
             <Route exact path='/'>
-              <Link to='/modify-form-f'><LgButton name={this.state.homepageOptions[0]} /></Link>
-              <Link to='on-the-fly'><LgButton name={this.state.homepageOptions[1]} /></Link>
+              <LgButton/>
+            </Route>
+            <Route exact path='/on-the-fly'>
+              <OnTheFly/>
             </Route>
           </Switch>
         </Router>
@@ -39,4 +40,5 @@ export default class App extends React.Component {
     );
   }
 }
+
 
