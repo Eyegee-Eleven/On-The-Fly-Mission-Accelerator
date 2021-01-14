@@ -9,8 +9,10 @@ export default class Header extends React.Component {
   render() {
     return (
       <>
-        <header>OTFMA</header>
+      <div />
+        <header>OTFMA</header><div />
         <img src={Logo} alt="Logo" width="150" height="100" id="Headerimg"/>
+      <div />
       </>
     );
   }

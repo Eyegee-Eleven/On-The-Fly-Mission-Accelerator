@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import StateProvider from './state'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <StateProvider> {/*this is proving a shared context (visiability of a single state to all of its child components all the way down to the floor) */}
+    <App /> 
+  </StateProvider>,
   document.getElementById('root')
 );
 
