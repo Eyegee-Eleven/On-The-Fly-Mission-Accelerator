@@ -3,7 +3,7 @@ import MissionDetails from './MissionDetails'
 import NavigationPane from './NavigationPane'
 import Kit from './Kit'
 import {Switch, Route, withRouter, BrowserRouter} from 'react-router-dom';
-
+import AircraftDetails from './AircraftDetails.js'
 class ModifyF extends React.Component {
     constructor(props){
         super(props);
@@ -39,6 +39,9 @@ class ModifyF extends React.Component {
                         <Switch>
                             <Route path={this.props.match.path+'/missiondetails'}>
                                 <MissionDetails formf={this.state.formf} setFormF={this.setFormF}/>
+                            </Route>
+                            <Route path={this.props.match.path+'/aircraftdetails'}>
+                                <AircraftDetails formf={this.state.formf} setFormF={this.setFormF}/>
                             </Route>
                             <Route path={this.props.match.path+'/kit'}>
                                 <Kit formf={this.state.formf} setFormF={this.setFormF}/>
