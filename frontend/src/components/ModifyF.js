@@ -50,7 +50,7 @@ class ModifyF extends React.Component {
                             <Route path={this.props.match.path+'/cargo'}>
                                 <Cargo formf={this.state.formf} setFormF={this.setFormF}/>
                             </Route>
-                            
+
                         </Switch>
                     </BrowserRouter>
                 </>
