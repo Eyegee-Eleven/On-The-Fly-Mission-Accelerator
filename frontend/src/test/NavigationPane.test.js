@@ -3,7 +3,7 @@ import NavigationPane from '../components/NavigationPane'
 
 describe("NavigationPane",() => {
     it("has all required children",()=>{
-        const wrapper = shallow(<NavigationPane/>);
+        const wrapper = shallow(<NavigationPane baseURL=''/>);
         expect(wrapper.find('#missiondetails')).toHaveLength(1);
         expect(wrapper.find('#aircraftdetails')).toHaveLength(1);
         expect(wrapper.find('#kit')).toHaveLength(1);
@@ -12,8 +12,8 @@ describe("NavigationPane",() => {
     })
 
     it("should highlight the link associated with the page we are on",()=>{
-        const wrapper=shallow(<NavigationPane page="missiondetails"/>)
-        const wrapper2=shallow(<NavigationPane page="kit"/>)
+        const wrapper=shallow(<NavigationPane baseURL='' page="missiondetails"/>)
+        const wrapper2=shallow(<NavigationPane baseURL='' page="kit"/>)
 
 
         expect(wrapper.find('#missiondetails').hasClass('highlighted')).toBe(true);

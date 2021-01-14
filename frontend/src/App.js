@@ -1,6 +1,6 @@
-import { Component } from 'react';
 import './App.css';
 import React from 'react'
+import ModifyF from './components/ModifyF'
 import Header from './components/Header'
 import LgButton from './components/LgButton'
 import {
@@ -25,12 +25,17 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        <Header/>
         <Router>
+          <Header/>
           <Switch>
+
             <Route exact path='/'>
               <Link to='/modify-form-f'><LgButton name={this.state.homepageOptions[0]} /></Link>
               <Link to='on-the-fly'><LgButton name={this.state.homepageOptions[1]} /></Link>
+            </Route>
+
+            <Route path='/modify-form-f'>
+              <ModifyF/>
             </Route>
 
           </Switch>

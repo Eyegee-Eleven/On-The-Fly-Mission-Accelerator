@@ -1,9 +1,9 @@
 import {Link} from 'react-router-dom';
 
-export default function NavigationPane( {page} ) {
+export default function NavigationPane( {page, baseURL}={} ) {
 
     const generateLink = (pageName, whatTheCoolUserSees) => {
-        return <Link key={pageName} className={page === pageName ? "highlighted" : ""} to={'/'+pageName+'/'} id={pageName}>{whatTheCoolUserSees}</Link>
+        return <Link key={pageName} className={page === pageName ? "highlighted" : ""} to={''+baseURL+'/'+pageName+'/'} id={pageName}>{whatTheCoolUserSees}</Link>
     }
 
     return  <div>
