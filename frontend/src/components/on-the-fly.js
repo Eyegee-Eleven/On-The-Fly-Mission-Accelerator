@@ -1,6 +1,7 @@
 import { Component, useEffect } from 'react';
 import React from 'react'
 import { StateContext } from '../state'
+import '../css/on-the-fly.css'
 
 import {
   BrowserRouter as Router,
@@ -21,21 +22,16 @@ export default function OnTheFly() {
 
   return (
     <>
-
-
       <Link to='/'><button>Go Back</button></Link>
-
       {context.FormF.formlist.map(item => {
-
         return (
-          <Link className='itemList' key={item.id} to={`/summary/${item.id}`}>
+          <Link  style={{ color: 'inherit', textDecoration: 'inherit'}} className='itemList' key={item.id} to={`/summary/${item.id}`}>
             <li>
               <h1 className='Tails' key={item.tail + item.id}>Tail: {item.tail}</h1>
               <h1 className='Mission' key={item.mission + item.id}>Mission: {item.mission}</h1>
               <h1 className='Date' key={item.data + item.id}>Date: {item.date}</h1>
             </li>
           </Link>)
-
       })}
 
     </>
