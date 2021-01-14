@@ -15,9 +15,6 @@ import {
 export default class App extends React.Component {
   constructor() {
     super()
-    this.state={
-      homepageOptions : ['Accelerate Your Mission', 'Change On-The-Fly']
-    } 
 
   }
 
@@ -31,8 +28,7 @@ export default class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path='/home'>
-              <Link to='/modify-form-f'><LgButton name={this.state.homepageOptions[0]} /></Link>
-              <Link to='/on-the-fly'><LgButton name={this.state.homepageOptions[1]} /></Link>
+              <LgButton/>
             </Route>
           </Switch>
         </Router>

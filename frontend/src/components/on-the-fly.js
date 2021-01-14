@@ -1,6 +1,6 @@
-import { Component } from 'react';
-
+import { Component, useEffect } from 'react';
 import React from 'react'
+import {StateContext} from '../state'
 
 import {
   BrowserRouter as Router,
@@ -9,26 +9,15 @@ import {
   Link
 } from "react-router-dom";
 
-export default class OnTheFly extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      form: [],
-      lineItems: []
-    }
-  }
+export default function OnTheFly() {
+  let context= React.useContext(StateContext) 
+ 
+  useEffect (async ()=> {
+    let response = await fetch('http://localhost:3001/list')
+    let Formlist=  await response.json()
+    context.setState({FormF:{...context.FormF,formlist:Formlist}});
+  },[]) //eslint-disable-line react-hooks/exhaustive-deps
 
-
-  componentDidMount() {
-    console.log(`im on line 27`)
-    fetch('http://localhost:3001/list')
-      .then(res => res.json())
-      .then(data => (this.setState({ form: data  })))
-      .catch((res) => console.log(res))
-
-  }
-
-  render() {
 
     return (
       <>
@@ -38,15 +27,15 @@ export default class OnTheFly extends React.Component {
           <Switch>
             <Route exact path='/on-the-fly'>
               <Link to='/home'><button>Go Back</button></Link>
-              {this.state.form.map(item =>{
-              console.log(`item on 56 ${JSON.stringify(this.state.form[0])}`)
-
+              
+              {context.FormF.formlist.map(item =>{
+              
                return (
                 <Link className='itemList' key={item.id} to={`/summary/${item.id}`}>
                   <li>
-                    <h1 key={item.tail +item.id}>Tail: {item.tail}</h1>
-                    <h1 key={item.mission+item.id}>Mission: {item.mission}</h1>
-                    <h1 key={item.data+item.id}>Date: {item.date}</h1>
+                    <h1 className='Tails' key={item.tail +item.id}>Tail: {item.tail}</h1>
+                    <h1 className='Mission' key={item.mission+item.id}>Mission: {item.mission}</h1>
+                    <h1 className='Date' key={item.data+item.id}>Date: {item.date}</h1>
                   </li>
                 </Link>)
 
@@ -56,7 +45,7 @@ export default class OnTheFly extends React.Component {
         </Router>
       </>
     )
-  }
+  
 
 
 
