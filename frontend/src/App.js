@@ -23,12 +23,15 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-      <OnTheFly/>
+      
         <Header/>
         <Router>
           <Switch>
-            <Route exact path='/home'>
+            <Route exact path='/'>
               <LgButton/>
+            </Route>
+            <Route exact path='/on-the-fly'>
+              <OnTheFly/>
             </Route>
           </Switch>
         </Router>
