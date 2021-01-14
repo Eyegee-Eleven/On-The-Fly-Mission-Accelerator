@@ -4,6 +4,7 @@ import React from 'react'
 import Header from './components/Header'
 import LgButton from './components/LgButton'
 import OnTheFly from './components/on-the-fly'
+import ModifyF from './components/ModifyF'
 import {
   BrowserRouter as Router,
   Route,
@@ -33,6 +34,9 @@ export default class App extends React.Component {
             <Route exact path='/on-the-fly'>
               <OnTheFly/>
             </Route>
+             <Route path='/modify-form-f'>
+              <ModifyF/>
+            </Route>
           </Switch>
         </Router>
 
@@ -40,5 +44,4 @@ export default class App extends React.Component {
     );
   }
 }
-
 
