@@ -1,6 +1,7 @@
 import React from 'react'
 import MissionDetails from './MissionDetails'
 import NavigationPane from './NavigationPane'
+import Kit from './Kit'
 import {Switch, Route, withRouter, BrowserRouter} from 'react-router-dom';
 
 class ModifyF extends React.Component {
@@ -19,13 +20,12 @@ class ModifyF extends React.Component {
                             crew_moment: 57,
                             fuel_weight: 8500,
                             fuel_moment: 2700,
-                            kit: "[{name: 'Fire extinguisher', weight: 20, moment: 5},{name: 'Rescue seat', weight: 35, moment: 15}]",
-                            cargo: "[{name: '2 pax', weight: 500, moment: 250},{name: '600RDS', weight: 210, moment: 50}]"
+                            kit: '[{"name": "Fire extinguisher", "weight": 20, "moment": 5},{"name": "Rescue seat", "weight": 35, "moment": 15}]',
+                            cargo: '[{"name": "2 pax", "weight": 500, "moment": 250},{"name": "600RDS", "weight": 210, "moment": 50}]'
                         }
                     }
     }
 
-    
     
     setFormF = (newFormFData) => {
         this.setState({formf: newFormFData});
@@ -39,6 +39,9 @@ class ModifyF extends React.Component {
                         <Switch>
                             <Route path={this.props.match.path+'/missiondetails'}>
                                 <MissionDetails formf={this.state.formf} setFormF={this.setFormF}/>
+                            </Route>
+                            <Route path={this.props.match.path+'/kit'}>
+                                <Kit formf={this.state.formf} setFormF={this.setFormF}/>
                             </Route>
                         </Switch>
                     </BrowserRouter>
