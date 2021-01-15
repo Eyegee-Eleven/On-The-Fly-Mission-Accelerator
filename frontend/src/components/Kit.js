@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class Kit extends React.Component {
 	constructor(props){
 		super(props);
@@ -42,7 +43,7 @@ export default class Kit extends React.Component {
 		})
 		
 		
-		return  <div>
+		return  <div className='inputs'>
 						Name:<input id='name' onChange={event => this.valueChanged(event, 'name')} value={this.state.name}/>
 						Weight:<input id='weight' onChange={event => this.valueChanged(event, 'weight')} value={this.state.weight}/>
 						Arm:<input id='arm' onChange={event => this.valueChanged(event, 'arm')} value={this.state.arm}/>

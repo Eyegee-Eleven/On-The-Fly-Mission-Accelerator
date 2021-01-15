@@ -19,7 +19,7 @@ body{
     color: inherit;
     background-color: #FFF3B0;
 }
-.input {
+/* input {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -27,7 +27,7 @@ body{
   color: inherit;
   text-decoration: inherit;
   background-color: #E09F3E;
-}
+} */
 image{
     padding: 20%;
     margin: 20%;
