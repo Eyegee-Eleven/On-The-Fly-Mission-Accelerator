@@ -1,17 +1,34 @@
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import OnTheFly from '../components/on-the-fly'
 import React from 'react'
+import StateProvider from '../state'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link
+} from "react-router-dom";
+
 
 describe('on-the-fly page', ()=>{
+  let appWrapper;
+  beforeEach(() => {
+    appWrapper = mount(
+      <StateProvider>
+        <Router>
+          <OnTheFly />
+        </Router>
+      </StateProvider>
+    )
+  })
   it('renders a back button',()=>{
-    let appWrapper = shallow(<OnTheFly/>)
     let button = appWrapper.exists('button')
     expect(button).toEqual(true);
   })
 
   it('renders form f with mission,tail,date', async ()=>{
     const fetch = jest.fn();
-    let wrapper=shallow(<OnTheFly/>, { disableLifecycleMethods: true })
+
 
     fetch.mockImplementation(() => {
         return Promise.resolve({
@@ -35,13 +52,14 @@ describe('on-the-fly page', ()=>{
         });
     });
 
-    await wrapper.instance().componentDidMount();
-    console.log('sauce')
-   
+    console.log(appWrapper.debug())
+    await appWrapper.find(OnTheFly).first().instance().componentDidMount();
     
-      expect(wrapper.find(".Misson")).toHaveLength(2)
-      expect(wrapper.find(".Tails")).toHaveLength(2)
-      expect(wrapper.find(".Date")).toHaveLength(2)
+   
+      
+      expect(appWrapper.find(".Misson")).toHaveLength(2)
+      expect(appWrapper.find(".Tails")).toHaveLength(2)
+      expect(appWrapper.find(".Date")).toHaveLength(2)
       
       fetch.mockClear();
 

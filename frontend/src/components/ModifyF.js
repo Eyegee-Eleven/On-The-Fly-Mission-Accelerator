@@ -8,11 +8,15 @@ import AircraftDetails from './AircraftDetails';
 
 import {Switch, Route, withRouter, BrowserRouter} from 'react-router-dom';
 
+
+
+
 class ModifyF extends React.Component {
     constructor(props){
         super(props);
         this.state= {
                         formf: {
+
                             tail: "0000",
                             date: "",
                             from: "",
@@ -26,9 +30,16 @@ class ModifyF extends React.Component {
                             fuel_moment: 0,
                             kit: '[]',
                             cargo: '[]'
+
                         }
                     }
     }
+
+    componentDidMount(){
+        fetch('http://localhost:3001/details', {method:'post'})
+            .then(res=> res.json())//makes an empty entry and returns an id
+            .then(data => this.setState({ formF: data }))
+      }
 
     
     setFormF = (newFormFData) => {

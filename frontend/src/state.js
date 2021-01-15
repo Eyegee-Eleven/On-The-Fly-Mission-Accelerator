@@ -7,7 +7,7 @@ const StateProvider = (props) => {
   const initState = {
     LgButton: {
       buttons:[
-        {name: 'Accelerate Your Mission',to: '/modify-form-f'},
+        {name: 'Accelerate Your Mission',to: '/modify-form-f/missiondetails'},
         { name: 'Change On-The-Fly', to: '/on-the-fly'}
       ]
     },
