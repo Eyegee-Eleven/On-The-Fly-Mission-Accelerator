@@ -25,7 +25,7 @@ export default function OnTheFly() {
       <Link to='/'><button>Go Back</button></Link>
       {context.FormF.formlist.map(item => {
         return (
-          <Link  style={{ color: 'inherit', textDecoration: 'inherit'}} className='itemList' key={item.id} to={`/summary/${item.id}`}>
+          <Link  style={{ color: 'inherit', textDecoration: 'inherit'}} className='itemList' key={item.id} to={`modify-form-f/summary/${item.id}`}>
             <li>
               <h1 className='Tails' key={item.tail + item.id}>Tail: {item.tail}</h1>
               <h1 className='Mission' key={item.mission + item.id}>Mission: {item.mission}</h1>
