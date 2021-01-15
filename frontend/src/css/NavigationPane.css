@@ -1,4 +1,29 @@
+/*
+335C67  Blue
+FFF3B0  Lighter Yellow
+E09F3E  Dark Yellow
+9E2A2B  Lighter Red
+540B0E  Dark Red
+*/
 a{
-  display: flex;  
-  flex-direction: column;
+  background-color: #FFF3B0;
+}
+.saveButton {
+  color: #FFF3B0;
+  background-color: #540B0E;
+  padding: 2px;
+}
+li{
+  color: #540B0E;
+}
+.navSpan{
+  color: #540B0E;
+  background-color: #FFF3B0; 
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  list-style: none;
+  text-transform: uppercase;
+  text-decoration: none;
+
 }

@@ -24,9 +24,9 @@ body{
     flex-direction: column;
     flex-wrap: wrap;
     margin: 1%;
-  color: inherit;
+  color: #FFF3B0;
   text-decoration: inherit;
-  background-color: #E09F3E;
+  background-color: #335C67;
 }
 image{
     padding: 20%;
@@ -36,7 +36,6 @@ header{
     color: #FFF3B0;
     font: xx-large Lato, Roboto, sans-serif;
     font-weight: 800;
-
 }
 button:hover {
     background-color: gray; /* Green */

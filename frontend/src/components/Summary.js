@@ -1,3 +1,6 @@
+import '../css/Summary.css'
+
+
 function calcWeightAndArm(items){
     let overAllWeight=0;
     let overAllMoment=0;
@@ -42,30 +45,80 @@ export default function Summary({formf}){
     const grossArm =  Math.round(grossMoment/grossWeight*1000) 
 
     return <>
-                <div id='kit'>
-                    Kit Weight:<label id='weight'>{kitWeight}</label>
-                    Arm:<label id='arm'>{kitArm}</label>
+            <div className='super'>
+            <div className='container'>
+                <h1>Weight: </h1>
+                <div id='kit' className='status'>
+                    Kit: <label id='weight' className='numeral'> {kitWeight} </label>
                 </div>
 
-                <div id='cargo'>
-                    Cargo:<label id='weight'>{cargoWeight}</label>
-                    Arm:<label id='arm'>{cargoArm}</label>
+                <div id='cargo' className='status'>
+                    Cargo: <label id='weight' className='numeral'> {cargoWeight} </label>
+                </div>  
+
+                <div id='operating' className='status'>
+                    Operating: <label id='weight' className='numeral'> {operatingWeight} </label>
                 </div>
 
-                <div id='operating'>
-                    Operating:<label id='weight'>{operatingWeight}</label>
-                    Arm:<label id='arm'>{operatingArm}</label>
+                <div id='zerofuel' className='status'>
+                    zerofuel: <label id='weight' className='numeral'> {zerofuelWeight} </label>
                 </div>
 
-                <div id='zerofuel'>
-                    zerofuel:<label id='weight'>{zerofuelWeight}</label>
-                    Arm:<label id='arm'>{zerofuelArm}</label>
+                <div id='gross' className='status'>
+                    Gross: <label id='weight' className='numeral'> {grossWeight} </label>
+                </div>
+            </div>
+            <div className='container'>
+            <h1>Arm</h1>
+                <div id='kit2' className='status'>
+                Kit: <label id='arm' className='numeral'> {kitArm} </label>
                 </div>
 
-                <div id='gross'>
-                    gross:<label id='weight'>{grossWeight}</label>
-                    Arm:<label id='arm'>{grossArm}</label>
+                <div id='cargo2' className='status'>
+                Cargo: <label id='arm' className='numeral'> {cargoArm} </label>
                 </div>
 
+                <div id='operating2' className='status'>
+                Operating: <label id='arm' className='numeral'> {operatingArm} </label>
+                </div>
+
+                <div id='zerofuel2' className='status'>
+                zerofuel: <label id='arm' className='numeral'> {zerofuelArm}</label>
+                </div>
+
+                <div id='gross2' className='status'>
+                Gross: <label id='arm' className='numeral'> {grossArm} </label>
+                </div>
+            </div>
+            </div>
             </>
 }
+
+/*
+<div className='container'>
+                <div id='kit' className='status'>
+                    Kit Weight: <label id='weight'> {kitWeight} </label>
+                    Arm: <label id='arm'> {kitArm} </label>
+                </div>
+
+                <div id='cargo' className='status'>
+                    Cargo: <label id='weight'> {cargoWeight} </label>
+                    Arm: <label id='arm'> {cargoArm} </label>
+                </div>
+
+                <div id='operating' className='status'>
+                    Operating: <label id='weight'> {operatingWeight} </label>
+                    Arm: <label id='arm'> {operatingArm} </label>
+                </div>
+
+                <div id='zerofuel' className='status'>
+                    zerofuel: <label id='weight'> {zerofuelWeight} </label>
+                    Arm: <label id='arm'> {zerofuelArm}</label>
+                </div>
+
+                <div id='gross' className='status'>
+                    gross: <label id='weight'> {grossWeight} </label>
+                    Arm: <label id='arm'> {grossArm} </label>
+                </div>
+              </div>
+*/

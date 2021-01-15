@@ -16,7 +16,6 @@ class ModifyF extends React.Component {
         super(props);
         this.state= {
                         formf: {
-
                             tail: "0000",
                             date: "",
                             from: "",
@@ -30,15 +29,19 @@ class ModifyF extends React.Component {
                             fuel_moment: 0,
                             kit: '[]',
                             cargo: '[]'
-
                         }
                     }
     }
 
     componentDidMount(){
-        fetch('http://localhost:3001/details', {method:'post'})
-            .then(res=> res.json())//makes an empty entry and returns an id
-            .then(data => this.setState({ formF: data }))
+            fetch('http://localhost:3001/details', {method:'post'})
+                .then(res=> res.json())//makes an empty entry and returns an id
+                .then(data => {
+                    const formFCopy={...this.state.formf};
+                    formFCopy.id=data[0].id;
+                    this.setState({ formf: formFCopy })
+                })
+            
       }
 
     
@@ -46,10 +49,22 @@ class ModifyF extends React.Component {
         this.setState({formf: newFormFData});
     }
 
+    saveFormF = async () => {
+        const message={
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state.formf) 
+          }
+
+        await fetch('http://localhost:3001/details', message);
+    }
+
     render() {
         return  <>
                     <BrowserRouter>
-                        <NavigationPane baseURL={this.props.match.path}/>
+                        <NavigationPane baseURL={this.props.match.path} saveFormF={this.saveFormF}/>
 
                         <Switch>
 

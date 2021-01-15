@@ -24,9 +24,10 @@ body{
     flex-direction: column;
     flex-wrap: wrap;
     margin: 1%;
-  color: inherit;
+  color: #540B0E;
   text-decoration: inherit;
-  background-color: #E09F3E;
+  background-color: #dff8ff;
+  padding: 2px;
 }
 image{
     padding: 20%;
@@ -36,6 +37,12 @@ header{
     color: #FFF3B0;
     font: xx-large Lato, Roboto, sans-serif;
     font-weight: 800;
+}
+.inputButton{
+    background-color: #FFF3B0;
+  color: #540B0E;
+  padding: 4px;
+  margin: 4px;
 
 }
 button:hover {
