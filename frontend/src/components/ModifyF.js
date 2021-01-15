@@ -3,6 +3,7 @@ import MissionDetails from './MissionDetails';
 import NavigationPane from './NavigationPane';
 import Kit from './Kit';
 import Cargo from './Cargo';
+import Summary from './Summary';
 import {Switch, Route, withRouter, BrowserRouter} from 'react-router-dom';
 
 class ModifyF extends React.Component {
@@ -15,14 +16,14 @@ class ModifyF extends React.Component {
                             from: "KABQ",
                             to: "KABQ",
                             mission: "TRANING",
-                            basic_weight: 36000,
-                            basic_moment: 11000,
+                            basic_weight: 36240.5,
+                            basic_moment: 14097.89,
                             crew_weight: 660,
-                            crew_moment: 57,
-                            fuel_weight: 8500,
-                            fuel_moment: 2700,
-                            kit: '[{"name": "Fire extinguisher", "weight": 20, "moment": 5},{"name": "Rescue seat", "weight": 35, "moment": 15}]',
-                            cargo: '[{"name": "2 pax", "weight": 500, "moment": 250},{"name": "600RDS", "weight": 210, "moment": 50}]'
+                            crew_moment: 157.5,
+                            fuel_weight: 9000,
+                            fuel_moment: 3460.5,
+                            kit: '[{"name":"overallkit", "weight": 1437.8, "arm": 519.92}]',
+                            cargo: '[{"name":"1 pax", "weight": 250, "arm": 480}]'
                         }
                     }
     }
@@ -49,6 +50,10 @@ class ModifyF extends React.Component {
 
                             <Route path={this.props.match.path+'/cargo'}>
                                 <Cargo formf={this.state.formf} setFormF={this.setFormF}/>
+                            </Route>
+
+                            <Route path={this.props.match.path+'/summary'}>
+                                <Summary formf={this.state.formf} setFormF={this.setFormF}/>
                             </Route>
 
                         </Switch>

@@ -17,6 +17,22 @@ let mockFormF = {
     cargo: '[{"name": "Fire extinguisher", "weight": 20, "arm": 5},{"name": "Rescue seat", "weight": 35, "arm": 15}]'
 };
 
+function calcWeightAndArm(items){
+    let overAllWeight=0;
+    let overAllMoment=0;
+    for (let item of items){
+        overAllWeight+=Number(item.weight);
+        overAllMoment+=Number(item.weight)*Number(item.arm);
+    }
+    if (!isFinite(overAllMoment)) overAllMoment=0;
+    if (!isFinite(overAllWeight)) overAllWeight=0;
+
+    let overAllArm = Math.round(overAllMoment/overAllWeight);
+    if (!isFinite(overAllArm)) overAllArm=0;
+
+    return {weight: overAllWeight, arm: overAllArm, moment: overAllMoment/1000};
+}
+
 //Moment = weight*arm
 //Arm = moment/weight
 
@@ -59,16 +75,10 @@ describe ('Summary', () => {
         const kitArm = kit.find('#arm');
 
         const kitItems=JSON.parse(mockFormF.kit);
-        let overAllWeight=0;
-        let overAllMoment=0;
-        for (let item of kitItems){
-            overAllWeight+=Number(item.weight);
-            overAllMoment+=Number(item.weight)*Number(item.arm);
-        }
-        const overAllArm = Math.round(overAllMoment/overAllWeight);
+        const {weight: overAllWeight, arm: overAllArm} = calcWeightAndArm(kitItems);
 
-        expect(kitWeight.props().value).toBe(String(overAllWeight));
-        expect(kitArm.props().value).toBe(String(overAllArm));
+        expect(String(kitWeight.text())).toBe(String(overAllWeight));
+        expect(String(kitArm.text())).toBe(String(overAllArm));
     });
 
     it("Should calculate cargo correctly", ()=>{
@@ -79,16 +89,62 @@ describe ('Summary', () => {
         const cargoArm = cargo.find('#arm');
 
         const cargoItems=JSON.parse(mockFormF.cargo);
-        let overAllWeight=0;
-        let overAllMoment=0;
-        for (let item of cargoItems){
-            overAllWeight+=Number(item.weight);
-            overAllMoment+=Number(item.weight)*Number(item.arm);
-        }
-        const overAllArm = Math.round(overAllMoment/overAllWeight);
+        const {weight: overAllWeight, arm: overAllArm} = calcWeightAndArm(cargoItems);
 
-        expect(cargoWeight.props().value).toBe(String(overAllWeight));
-        expect(cargoArm.props().value).toBe(String(overAllArm));
+        expect(String(cargoWeight.text())).toBe(String(overAllWeight));
+        expect(String(cargoArm.text())).toBe(String(overAllArm));
     });
 
+    it("Should calculate Operating weights/arms correctly", ()=>{
+        const wrapper = shallow(<Summary formf={mockFormF}/>);
+        
+        const operating = wrapper.find('#operating');
+        const operatingWeight = operating.find('#weight');
+        const operatingArm = operating.find('#arm');
+
+        const {weight: kitWeight, moment: kitMoment} = calcWeightAndArm(JSON.parse(mockFormF.kit));
+
+        let overAllWeight = mockFormF.basic_weight + mockFormF.crew_weight + kitWeight;
+        let overAllMoment = mockFormF.basic_moment + mockFormF.crew_moment + kitMoment;
+        let overAllArm = Math.round(overAllMoment/overAllWeight*1000);
+
+        expect(String(operatingWeight.text())).toBe(String(overAllWeight));
+        expect(String(operatingArm.text())).toBe(String(overAllArm));
+    });
+
+    it("Should calculate zero fuel weights/arms correctly", ()=>{
+        const wrapper = shallow(<Summary formf={mockFormF}/>);
+        
+        const zerofuel = wrapper.find('#zerofuel');
+        const zerofuelWeight = zerofuel.find('#weight');
+        const zerofuelArm = zerofuel.find('#arm');
+
+        const {weight: kitWeight, moment: kitMoment} = calcWeightAndArm(JSON.parse(mockFormF.kit));
+        const {weight: cargoWeight, moment: cargoMoment} = calcWeightAndArm(JSON.parse(mockFormF.cargo));
+
+        let overAllWeight = mockFormF.basic_weight + mockFormF.crew_weight + kitWeight + cargoWeight;
+        let overAllMoment = mockFormF.basic_moment + mockFormF.crew_moment + kitMoment + cargoMoment;
+        let overAllArm = Math.round(overAllMoment/overAllWeight*1000);
+
+        expect(String(zerofuelWeight.text())).toBe(String(overAllWeight));
+        expect(String(zerofuelArm.text())).toBe(String(overAllArm));
+    });
+
+    it("Should calculate gross weights/arms correctly", ()=>{
+        const wrapper = shallow(<Summary formf={mockFormF}/>);
+        
+        const gross = wrapper.find('#gross');
+        const grossWeight = gross.find('#weight');
+        const grossArm = gross.find('#arm');
+
+        const {weight: kitWeight, moment: kitMoment} = calcWeightAndArm(JSON.parse(mockFormF.kit));
+        const {weight: cargoWeight, moment: cargoMoment} = calcWeightAndArm(JSON.parse(mockFormF.cargo));
+
+        let overAllWeight = mockFormF.basic_weight + mockFormF.crew_weight + kitWeight + cargoWeight + mockFormF.fuel_weight;
+        let overAllMoment = mockFormF.basic_moment + mockFormF.crew_moment + kitMoment + cargoMoment + mockFormF.fuel_moment;
+        let overAllArm = Math.round(overAllMoment/overAllWeight*1000);
+
+        expect(String(grossWeight.text())).toBe(String(overAllWeight));
+        expect(String(grossArm.text())).toBe(String(overAllArm));
+    });
 })
