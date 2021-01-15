@@ -14,7 +14,19 @@ function calcWeightAndArm(items){
     return {weight: overAllWeight, arm: overAllArm, moment: overAllMoment/1000};
 }
 
+function typeConvertFormF(formf){
+    formf.basic_weight=Number(formf.basic_weight);
+    formf.basic_moment=Number(formf.basic_moment);
+    formf.crew_weight=Number(formf.crew_weight);
+    formf.crew_moment=Number(formf.crew_moment);
+    formf.fuel_weight=Number(formf.fuel_weight);
+    formf.fuel_moment=Number(formf.fuel_moment);
+}
+
 export default function Summary({formf}){
+    formf={...formf};
+    typeConvertFormF(formf);
+
     const {weight: kitWeight, arm: kitArm, moment: kitMoment} = calcWeightAndArm(JSON.parse(formf.kit));
     const {weight: cargoWeight, arm: cargoArm, moment: cargoMoment} = calcWeightAndArm(JSON.parse(formf.cargo));
     const operatingWeight = formf.basic_weight + formf.crew_weight + kitWeight
