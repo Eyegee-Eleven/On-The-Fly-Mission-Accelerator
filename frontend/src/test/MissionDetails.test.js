@@ -13,8 +13,8 @@ let mockFormF = {
     crew_moment: 57,
     fuel_weight: 8500,
     fuel_moment: 2700,
-    kit: "[{name: 'Fire extinguisher', weight: 20, moment: 5},{name: 'Rescue seat', weight: 35, moment: 15}]",
-    cargo: "[{name: '2 pax', weight: 500, moment: 250},{name: '600RDS', weight: 210, moment: 50}]"
+    kit: '[{"name": "2 pax", "weight": 500, "arm": 250},{"name": "600RDS", "weight": 210, "arm": 50}]',
+    cargo: '[{"name": "Fire extinguisher", "weight": 20, "arm": 5},{"name": "Rescue seat", "weight": 35, "arm": 15}]'
 };
 
 describe ('MissionDetails', () => {
