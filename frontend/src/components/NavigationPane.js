@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import '../css/NavigationPane.css'
 
 export default function NavigationPane( {page, baseURL}={} ) {
 
