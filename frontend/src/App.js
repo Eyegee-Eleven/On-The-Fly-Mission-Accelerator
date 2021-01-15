@@ -34,7 +34,7 @@ export default class App extends React.Component {
             <Route exact path='/on-the-fly'>
               <OnTheFly/>
             </Route>
-             <Route path='/modify-form-f/'>
+             <Route path='/modify-form-f'>
               <ModifyF/>
             </Route>
           </Switch>
