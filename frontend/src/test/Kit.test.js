@@ -1,6 +1,7 @@
 import { shallow } from 'enzyme';
 import Kit from '../components/Kit';
 
+
 let mockFormF = {
     tail: "0026",
     date: "2021-01-12T07:00:00.000Z",

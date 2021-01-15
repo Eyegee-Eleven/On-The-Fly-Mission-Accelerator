@@ -6,7 +6,7 @@ export default function MissionDetails( {formf={}, setFormF} ){
 		setFormF(newFormF);
 	}
 
-	return	<div>
+	return	<div className='inputs'>
 				Mission Name:<input type='text' id='mission' onChange={inputOnChange} value={formf.mission}/>
 				To:<input type='text' id='to' onChange={inputOnChange} value={formf.to}/>
 				From:<input type='text' id='from' onChange={inputOnChange} value={formf.from}/>
