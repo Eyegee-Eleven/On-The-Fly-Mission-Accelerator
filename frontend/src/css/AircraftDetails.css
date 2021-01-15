@@ -1,0 +1,40 @@
+/*
+335C67  Blue
+FFF3B0  Lighter Yellow
+E09F3E  Dark Yellow
+9E2A2B  Lighter Red
+540B0E  Dark Red
+*/
+body{
+    background-color: #540B0E;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-shrink: 1;   padding-right: 30%;
+    padding-left: 30%;
+    margin: 4%;
+    color: inherit;
+    background-color: #FFF3B0;
+}
+.input {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 1%;
+  color: inherit;
+  text-decoration: inherit;
+  background-color: #E09F3E;
+}
+image{
+    padding: 20%;
+    margin: 20%;
+}
+header{   
+    color: #FFF3B0;
+    font: xx-large Lato, Roboto, sans-serif;
+    font-weight: 800;
+
+}
