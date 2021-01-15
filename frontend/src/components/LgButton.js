@@ -19,7 +19,7 @@ export default function LgButton () {
         {
           context.LgButton.buttons.map(item =>{
             return(
-              <Link to={item.to}><button className='homepage-button'>{item.name}</button></Link>
+              <Link key={item.name} to={item.to}><button className='homepage-button'>{item.name}</button></Link>
             )
           })
         }
