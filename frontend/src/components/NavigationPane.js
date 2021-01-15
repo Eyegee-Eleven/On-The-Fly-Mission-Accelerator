@@ -8,7 +8,7 @@ export default function NavigationPane( {page, baseURL, saveFormF}={} ) {
         return <li><Link style={{textDecoration: 'none',color: '#335C67'}} key={pageName} className={page === pageName ? "highlighted" : ""} to={''+baseURL+'/'+pageName+'/'} id={pageName}>{whatTheCoolUserSees}</Link></li>
     }
     return  <span className='navSpan'> 
-            <a href='http://localhost:3000'><img src={Logo} alt="Logo" width="50" height="25" id="Headerimg"/></a> 
+            <a href='http://localhost:80'><img src={Logo} alt="Logo" width="50" height="25" id="Headerimg"/></a> 
                 {
                     [
                         generateLink('missiondetails', 'Mission Details'),
